@@ -1,2 +1,37 @@
+# Python cache files
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# SQLite DB
+*.sqlite3
+*.json
+
+# Virtual environment
+venv/
+.env/
 .env
+.venv/
+
 .env
+.env.*
+cms/settings/dev.py
+
+# Editor & system files
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Node modules (frontend projects)
+node_modules/
+
+# 忽略 media 文件夹下所有内容
+media/*
+
+# 但允许 media/images 文件夹及其内容被加入
+!media/images/
+!media/images/**
+
+# Logs
+*.log
