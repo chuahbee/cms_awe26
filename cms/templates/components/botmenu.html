@@ -1,0 +1,23 @@
+<!-- <ul id="timeline">
+  <li data-index="0" class="active">
+    AWEPAY
+  </li>
+  {% for link in page.links.all %}
+    <li data-index="{{ forloop.counter }}">
+      {{ link.title|upper }}
+    </li>
+  {% endfor %}
+</ul> -->
+
+<ul id="timeline">
+  <li data-index="0" class="active">
+    <a href="#top">AWEPAY</a>
+  </li>
+  {% for link in page.links.all %}
+    <li data-index="{{ forloop.counter }}">
+      {% if link.is_visible %}
+      <a href="#{{ link.title|slugify }}">{{ link.title|upper }}</a>
+      {% endif %}
+    </li>
+  {% endfor %}
+</ul>

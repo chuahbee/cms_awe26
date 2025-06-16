@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags %}
+
+
+{% block content %}
+<div id="wrapper" class="flex ">
+  {% if page.image %}
+  <img src="{{ page.image.url }}" alt="{{ page.image.title }}">
+  {% endif %}
+
+  <!-- 0. INTRO -->
+  <section class="panel intro">
+    <h1>
+      <span class="span">{{ page.welcome_prefix }}</span>
+      {{ page.brand_name }}
+    </h1>
+
+    <div class="centerBox">
+      <div class="innerBox">
+        {% for link in page.links.all %}
+            {% if link.is_visible %}
+                {% if link.sublinks.all %}
+                <!-- 有子链接时，例如 Crypto -->
+                <div class="centerBox2">
+                  <div class="centerBoxLink">
+                    <!-- <span class="{{ link.icon_class }}"></span> -->
+                    {% if link.icon %}
+                    {% image link.icon fill-100x100 alt=link.title %}
+                    {% endif %}
+                    {{ link.title }}
+                  </div>
+                  <div class="innerBox">
+                    {% for sub in link.sublinks.all %}
+                    {% if sub.is_visible %}
+                    <a href="{% pageurl sub.url %}" class="centerBoxLink">
+                      {% if sub.logo %}
+                      {% image sub.logo fill-100x100 alt=sub.title %}
+                      <!-- <img src="{{ sub.logo.url }}" alt="{{ sub.title }}"> -->
+                      {% endif %}
+                      {{ sub.title }}
+                      <span class="next-right"></span>
+                    </a>
+                    {% endif %}
+                    {% endfor %}
+                  </div>
+                </div>
+                {% else %}
+                <!-- 没有子链接时，例如 P2P、Credit Card -->
+                {% with url=link.url %}
+                <a href="{% if url %}{% pageurl link.url %}{% else %}#{% endif %}" class="centerBoxLink">
+                  {% if link.icon %}
+                  {% image link.icon fill-100x100 alt=link.title %}
+                  {% endif %}
+                  <!-- <span class="{{ link.icon_class }}"></span> -->
+                  {{ link.title }}
+                  <span class="next-right"></span>
+                </a>
+                {% endwith %}
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  {% for link in page.links.all %}
+  {% if link.is_visible %}
+  <section id="{{ link.title|slugify }}" class="panel {{ link.title|lower }}">
+    <h1>
+      <span class="span">AWEPAY</span>
+      {{ link.title }}
+    </h1>
+    <div class="centerBox">
+      <div class="innerBox">
+        {% if link.sublinks.all %}
+        {% for sub in link.sublinks.all %}
+        {% if sub.is_visible %}
+        <a href="{% pageurl sub.url %}" class="centerBoxLink">
+          {% if sub.logo %}
+          {% image sub.logo fill-100x100 alt=sub.title %}
+          {% endif %}
+          {{ sub.title }}
+          <span class="next-right"></span>
+        </a>
+        {% endif %}
+        {% endfor %}
+        {% else %}
+        {% with url=link.url %}
+        <a href="{% if url %}{% pageurl link.url %}{% else %}#{% endif %}" class="centerBoxLink">
+          {% if link.icon %}
+          {% image link.icon fill-100x100 alt=link.title %}
+          {% endif %}
+          <!-- <span class="{{ link.icon_class }}"></span> -->
+          Let go!
+          <span class="next-right"></span>
+        </a>
+        {% endwith %}
+        {% endif %}
+      </div>
+    </div>
+  </section>
+  {% endif %}
+  {% endfor %}
+
+
+</div>
+
+<!-- ← 左箭头 -->
+<button id="prevBtn" class="arrow left my">❮</button>
+<!-- → 右箭头 -->
+<button id="nextBtn" class="arrow right my">❯</button>
+
+{% include "components/botmenu.html" %}
+
+{% endblock %}

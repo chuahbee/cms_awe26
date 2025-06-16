@@ -1,0 +1,108 @@
+:root {
+  --coral: #d6d6d6;
+  --mint: #b4eded;
+  --cream: #ffe1aa;
+  --lightorange: #c8edd4;
+  --brown: #1b2315;
+  --white: #f2f2f2;
+  --spacebg: url("../images/space.jpg");
+  --fontnormal: normal;
+  --font500: 500;
+  --font600: 600;
+  --fontbold: 700;
+  --mainfontweight: 300;
+  --fontfamily: "Poppins", sans-serif;
+  --mainfontstyle: normal;
+  --fontsmall: 0.87rem;
+  --fontmiddle: 1rem;
+  --fontmiddlelarge: 1.3rem;
+  --fontlarge: 2rem;
+  --fontsubtitle: 1.2rem;
+  --bodybg: #efefef;
+  --greycls: #dadada;
+  --maincls: #0e7e62;
+  --lightgreenbackground: #a3e4c9;
+  --greyfont: #6c6c6c;
+  --lightgrey: #7b7b7b;
+}
+
+/* 完全隐藏 Wagtail 的 SVG logo */
+.sidebar-wagtail-branding__icon-wrapper svg {
+  display: none !important;
+}
+.sidebar-wagtail-branding__icon-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.content-title::after {
+    content: "";
+    display: inline-block;
+    background-image: url("/static/img/editor-banner.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 60px;
+    height: 60px;
+    margin-left: 20px;
+    vertical-align: middle;
+}
+.w-panel__content fieldset{
+  padding: 0;
+}
+.help{
+  color: var(--lightgrey);
+  font-style: italic;
+}
+.help-img{
+  margin-right: 5px;
+}
+.hugeicons--touchpad-04 {
+  display: inline-block;
+  width: 1.5em;
+  height: 1.5em;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg fill='none' stroke='%23c6c7c6' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' color='%23c6c7c6'%3E%3Cpath d='M22 13.579v.163m0 0c0-.823-.6-1.525-1.418-1.66l-1.128-.187v.842M22 13.742v2.083c0 1.83 0 2.745-.28 3.473a4.22 4.22 0 0 1-2.433 2.422c-.732.28-1.651.28-3.49.28c-.964 0-1.446 0-1.894-.098a4.24 4.24 0 0 1-1.852-.922c-.348-.298-.637-.682-1.216-1.45l-2.549-3.384a1.42 1.42 0 0 1 .028-1.745a1.435 1.435 0 0 1 2.13-.117l1.29 1.368v-8.24c0-.78.626-1.412 1.4-1.412c.772 0 1.4.632 1.4 1.412v2.798m0 0h.678a1.69 1.69 0 0 1 1.697 1.685m-2.376-1.684v2.526m2.376-.842v.842m0-.842v-.842h.849a1.69 1.69 0 0 1 1.697 1.684m0 0v.842'/%3E%3Cpath d='M22 8.01c-.036-2.484-.22-3.892-1.163-4.836C19.665 2 17.778 2 14.005 2h-4.001C6.23 2 4.344 2 3.172 3.174S2 6.236 2 10.014v2.003c0 1.867 0 2.8.305 3.537a4 4 0 0 0 2.165 2.168c.408.17.876.244 1.53.278'/%3E%3C/g%3E%3C/svg%3E");
+}
+/* 用背景图替代 */
+/* .sidebar-wagtail-branding__icon-wrapper::before {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 40px;
+  background-image: url("/static/images/awepaylogo_pay_al.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+} */
+
+/* 只对 login 页面有效 */
+body.login {
+  background: linear-gradient(to bottom right, #c9eeee, #54a58b);
+}
+
+body.login .login-logo {
+  background-image: url("/static/images/awepaylogo_pay_al.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100px;
+  margin-bottom: 20px;
+}
+
+body.login .icon-wagtail {
+  display: none !important;
+}
+
+body.login .login-heading {
+  font-size: 26px;
+  font-weight: bold;
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.login .content-wrapper {
+  background:var(--brown);
+}
+
